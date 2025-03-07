@@ -1,0 +1,52 @@
+{
+    "name": " extracted_vector_table",
+    "partition_num": 256,
+    "replica_num": 3,
+    "engine": {
+        "name": "gamma",
+        "index_size": 100000, 
+        "retrieval_type": "IVFHNSWPQ",
+        "retrieval_param": {
+            "metric_type": "InnerProduct",
+            "ncentroids": 2048,
+            "nsubvector": 32,
+            "hnsw": {
+                "M": 32,
+                "efConstruction": 200
+            },
+            "pq": {
+                "nsubvector": 48
+            }
+        }
+    },
+    "properties": {
+        "entity_id": {
+            "type": "STRING",
+            "index": true
+        },
+        "doc_id": {
+            "type": "STRING",
+            "index": true
+        },
+        "entity_name": {
+            "type": "STRING",
+            "index": true
+        },
+        "entity_type": {
+            "type": "STRING",
+            "index": true
+        },
+        "position": {
+            "type": "INT",
+            "array": true
+        },
+        "embedding": {
+            "type": "VECTOR",
+            "dimension": 768,
+            "format": "normalization"
+        },
+        "relations": {
+            "type": "JSON"
+        }
+    }
+}
